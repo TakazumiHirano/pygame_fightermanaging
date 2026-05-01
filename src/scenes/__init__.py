@@ -1,6 +1,9 @@
 # src/scenes/__init__.py
 
-# 各ファイルからクラスをインポートしておく
+# エンジンから基底クラスを連れてくる
+from src.engine.scene_base import SceneBase
+
+# 各シーンを公開する
 from .title_scene import TitleScene
 from .battle_scene import BattleScene
 from .settings_scene import SettingsScene

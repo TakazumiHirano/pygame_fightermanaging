@@ -1,3 +1,6 @@
+# 自分のフォルダ内にある scene_base をインポート
+from .scene_base import SceneBase
+
 class SceneController:
     """シーンの登録と遷移を管理するコントローラ"""
 
@@ -51,21 +54,3 @@ class SceneController:
             # 履歴がない場合はデフォルトでタイトルへ
             self.request_change("title", use_history=False)
 
-
-class SceneBase:
-    """すべての画面の親となるクラス"""
-
-    def __init__(self, controller):
-        self.controller = controller
-
-    def update(self):
-        pass
-
-    def draw(self, screen):
-        pass
-
-    def handle_event(self, event):
-        pass
-
-    def terminate(self):
-        pass

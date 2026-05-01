@@ -1,6 +1,6 @@
 import pygame
 import time
-from src.engine.scene_manager import SceneBase
+from . import SceneBase
 from config.settings import *
 
 
