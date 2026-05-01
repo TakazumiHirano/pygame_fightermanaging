@@ -32,14 +32,15 @@ class Game:
             self.scene.update()
 
             # シーンの切り替えチェック
-            if self.scene != self.scene.next_scene:
+            if self.scene.next_scene is not None:
                 self.scene = self.scene.next_scene
-                self.scene.next_scene = self.scene
 
             # 3. 描画
             self.scene.draw(self.screen)
             pygame.display.flip()
             self.clock.tick(FPS)
+
+            self.scene.endstep()
 
 
 if __name__ == "__main__":
