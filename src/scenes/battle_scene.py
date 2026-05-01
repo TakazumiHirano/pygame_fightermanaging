@@ -9,7 +9,7 @@ class BattleScene(SceneBase):
         # 親クラスの SceneBase に controller を渡して初期化
         super().__init__(controller)
         self.start_time = time.time()
-        self.duration = 10
+        self.duration = 3
 
     def update(self):
         elapsed = time.time() - self.start_time
