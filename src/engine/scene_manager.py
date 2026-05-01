@@ -12,14 +12,12 @@ class SceneController:
 
     def _initialize_scenes(self):
         """全てのシーンをインポートして辞書に登録する内部メソッド"""
-        # 循環参照を防ぐため、メソッド内でインポート
-        from src.scenes.title_scene import TitleScene
-        from src.scenes.battle_scene import BattleScene
-        from src.scenes.settings_scene import SettingsScene
 
-        self.register("title", TitleScene)
-        self.register("battle", BattleScene)
-        self.register("settings", SettingsScene)
+        # scenes フォルダの __init__.py で定義したものを一括でインポート
+        from src import scenes
+        self.register("title", scenes.TitleScene)
+        self.register("battle", scenes.BattleScene)
+        self.register("settings", scenes.SettingsScene)
 
     def register(self, name, scene_class):
         """シーンを名前で登録する"""
