@@ -15,6 +15,6 @@ class SettingsScene(SceneBase):
         screen.blit(txt, (50, SCREEN_HEIGHT // 2))
 
     def handle_event(self, event):
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONUP:
             if event.pos[1] > SCREEN_HEIGHT // 2:
                 self.next_scene = self.previous_scene

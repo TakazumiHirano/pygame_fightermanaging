@@ -27,6 +27,6 @@ class BattleScene(SceneBase):
         screen.blit(txt, (SCREEN_WIDTH//2 - 150, SCREEN_HEIGHT // 2))
 
     def handle_event(self, event):
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONUP:
             from src.scenes.settings_scene import SettingsScene
             self.next_scene = SettingsScene(self)
