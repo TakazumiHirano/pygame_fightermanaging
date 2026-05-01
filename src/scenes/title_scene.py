@@ -4,8 +4,9 @@ from config.settings import *
 
 
 class TitleScene(SceneBase):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, controller):
+        # 親クラスの SceneBase に controller を渡して初期化
+        super().__init__(controller)
 
     def draw(self, screen):
         screen.fill((30, 30, 50))  # 濃い紺
@@ -23,8 +24,7 @@ class TitleScene(SceneBase):
         if event.type == pygame.MOUSEBUTTONUP:
             mouse_y = event.pos[1]
             if mouse_y < SCREEN_HEIGHT // 2:
-                from src.scenes.battle_scene import BattleScene
-                self.next_scene = BattleScene()
-            else:
-                from src.scenes.settings_scene import SettingsScene
-                self.next_scene = SettingsScene(self)  # 戻り先として自分を渡す
+                # 名前でリクエストを送る
+                self.controller.request_change("battle")
+            else:  # 画面下部
+                self.controller.request_change("settings")

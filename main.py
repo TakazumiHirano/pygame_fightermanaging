@@ -3,6 +3,11 @@ import sys
 from config.settings import *
 from src.scenes.title_scene import TitleScene
 
+from src.engine.scene_manager import SceneController
+from src.scenes.title_scene import TitleScene
+from src.scenes.battle_scene import BattleScene
+from src.scenes.settings_scene import SettingsScene
+
 
 class Game:
     def __init__(self):
@@ -13,12 +18,21 @@ class Game:
         pygame.display.set_caption(TITLE)
         # フレームレート管理用の時計
         self.clock = pygame.time.Clock()
-        # 最初のシーンをセット
-        self.scene = TitleScene()
+
+        # コントローラの作成とシーンの登録
+        self.controller = SceneController()
+        self.controller.register("title", TitleScene)
+        self.controller.register("battle", BattleScene)
+        self.controller.register("settings", SettingsScene)
+
+        # 最初のシーンを開始
+        self.controller.request_change("title")
 
     def run(self):
         """ゲームループ"""
-        while self.scene is not None:
+        while self.controller.current_scene is not None:
+            scene = self.controller.current_scene
+
             # 1. イベント処理
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -26,21 +40,16 @@ class Game:
                     sys.exit()
 
                 # 現在のシーンにイベントを渡す
-                self.scene.handle_event(event)
+                scene.handle_event(event)
 
             # 2. 更新
-            self.scene.update()
-
-            # シーンの切り替えチェック
-            if self.scene.next_scene is not None:
-                self.scene = self.scene.next_scene
+            scene.update()
 
             # 3. 描画
-            self.scene.draw(self.screen)
+            scene.draw(self.screen)
+
             pygame.display.flip()
             self.clock.tick(FPS)
-
-            self.scene.endstep()
 
 
 if __name__ == "__main__":

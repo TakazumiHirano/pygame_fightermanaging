@@ -5,16 +5,16 @@ from config.settings import *
 
 
 class BattleScene(SceneBase):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, controller):
+        # 親クラスの SceneBase に controller を渡して初期化
+        super().__init__(controller)
         self.start_time = time.time()
         self.duration = 10
 
     def update(self):
         elapsed = time.time() - self.start_time
         if elapsed >= self.duration:
-            from src.scenes.title_scene import TitleScene
-            self.next_scene = TitleScene()
+            self.controller.request_change("title")
 
     def draw(self, screen):
         screen.fill((100, 30, 30))  # 赤
@@ -28,5 +28,5 @@ class BattleScene(SceneBase):
 
     def handle_event(self, event):
         if event.type == pygame.MOUSEBUTTONUP:
-            from src.scenes.settings_scene import SettingsScene
-            self.next_scene = SettingsScene(self)
+            # 名前でリクエストを送る
+            self.controller.request_change("settings")
