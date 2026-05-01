@@ -1,12 +1,9 @@
 import pygame
 import sys
 from config.settings import *
-from src.scenes.title_scene import TitleScene
 
+# 各シーンの制御
 from src.engine.scene_manager import SceneController
-from src.scenes.title_scene import TitleScene
-from src.scenes.battle_scene import BattleScene
-from src.scenes.settings_scene import SettingsScene
 
 
 class Game:
@@ -19,11 +16,9 @@ class Game:
         # フレームレート管理用の時計
         self.clock = pygame.time.Clock()
 
-        # コントローラの作成とシーンの登録
+        # コントローラの作成
+        # シーンは中の _initialize_scenes が全シーンを準備
         self.controller = SceneController()
-        self.controller.register("title", TitleScene)
-        self.controller.register("battle", BattleScene)
-        self.controller.register("settings", SettingsScene)
 
         # 最初のシーンを開始
         self.controller.request_change("title")

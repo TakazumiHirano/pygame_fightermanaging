@@ -1,6 +1,3 @@
-import pygame
-
-
 class SceneController:
     """シーンの登録と遷移を管理するコントローラ"""
 
@@ -9,6 +6,20 @@ class SceneController:
         self.current_scene = None
         self.current_scene_name = None  # 現在のシーン名を保持
         self.history = []               # 遷移履歴を保存するスタック
+
+        # ここでシーンをインポートして登録する
+        self._initialize_scenes()
+
+    def _initialize_scenes(self):
+        """全てのシーンをインポートして辞書に登録する内部メソッド"""
+        # 循環参照を防ぐため、メソッド内でインポート
+        from src.scenes.title_scene import TitleScene
+        from src.scenes.battle_scene import BattleScene
+        from src.scenes.settings_scene import SettingsScene
+
+        self.register("title", TitleScene)
+        self.register("battle", BattleScene)
+        self.register("settings", SettingsScene)
 
     def register(self, name, scene_class):
         """シーンを名前で登録する"""
