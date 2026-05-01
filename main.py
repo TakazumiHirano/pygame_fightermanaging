@@ -1,6 +1,8 @@
 import pygame
 import sys
 from config.settings import *
+from src.scenes.title_scene import TitleScene
+
 
 class Game:
     def __init__(self):
@@ -11,41 +13,31 @@ class Game:
         pygame.display.set_caption(TITLE)
         # フレームレート管理用の時計
         self.clock = pygame.time.Clock()
-        self.is_running = True
+        # 最初のシーンをセット
+        self.scene = TitleScene()
 
     def run(self):
         """ゲームループ"""
-        while self.is_running:
-            self.handle_events()  # 入力処理
-            self.update()         # データ更新
-            self.draw()           # 描画処理
-            self.clock.tick(FPS)  # FPSの固定
+        while self.scene is not None:
+            # イベント処理
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                self.scene.handle_event(event)
 
-        pygame.quit()
-        sys.exit()
+            # 更新
+            self.scene.update()
 
-    def handle_events(self):
-        """イベント処理（入力やウィンドウ操作）"""
-        for event in pygame.event.get():
-            # 閉じるボタンが押された時
-            if event.type == pygame.QUIT:
-                self.is_running = False
+            # シーンの切り替えチェック
+            if self.scene != self.scene.next_scene:
+                self.scene = self.scene.next_scene
 
-    def update(self):
-        """ゲームロジックの更新（今は空っぽ）"""
-        pass
+            # 描画
+            self.scene.draw(self.screen)
+            pygame.display.flip()
+            self.clock.tick(FPS)
 
-    def draw(self):
-        """画面描画"""
-        self.screen.fill(COLOR_BLACK)  # 背景を黒で塗りつぶし
-        
-        # --- ここに描画処理を書いていく ---
-        # サンプルとして文字を表示
-        font = pygame.font.SysFont("notosanscjp", 32) # 環境に合わせて変更してください
-        text = font.render("Press 'X' to Close Window", True, COLOR_WHITE)
-        self.screen.blit(text, (50, 50))
-        
-        pygame.display.flip()  # 画面を更新
 
 if __name__ == "__main__":
     game = Game()
