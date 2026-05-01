@@ -19,21 +19,24 @@ class Game:
     def run(self):
         """ゲームループ"""
         while self.scene is not None:
-            # イベント処理
+            # 1. イベント処理
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+
+                # 現在のシーンにイベントを渡す
                 self.scene.handle_event(event)
 
-            # 更新
+            # 2. 更新
             self.scene.update()
 
             # シーンの切り替えチェック
             if self.scene != self.scene.next_scene:
                 self.scene = self.scene.next_scene
+                self.scene.next_scene = self.scene
 
-            # 描画
+            # 3. 描画
             self.scene.draw(self.screen)
             pygame.display.flip()
             self.clock.tick(FPS)
