@@ -10,7 +10,7 @@ class TitleScene(SceneBase):
 
     def draw(self, screen):
         screen.fill((30, 30, 50))  # 濃い紺
-        font = pygame.font.SysFont("msgothic", 40)
+        font = self.controller.asset_manager.get_font(40)
 
         # 上部（戦闘へ）
         txt_battle = font.render("UPPER: GO TO BATTLE", True, COLOR_WHITE)

@@ -9,3 +9,6 @@ TITLE = "管理職はつらいよ 〜冒険者パーティ・マネジメント�
 # 色の定義（RGB）
 COLOR_BLACK = (0, 0, 0)
 COLOR_WHITE = (255, 255, 255)
+
+# 共通のフォント名リスト
+FONT_NAMES = ["msgothic", "meiryo", "hiraginosansgb"]

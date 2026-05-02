@@ -1,5 +1,6 @@
 # 自分のフォルダ内にある scene_base をインポート
 from .scene_base import SceneBase
+from .asset_manager import AssetManager
 from src.models.data_manager import DataManager
 
 
@@ -8,6 +9,7 @@ class SceneController:
 
     def __init__(self):
         self.data_manager = DataManager()
+        self.asset_manager = AssetManager()
 
         self.scenes_registry = {}  # "title": TitleScene のような辞書
         self.current_scene = None

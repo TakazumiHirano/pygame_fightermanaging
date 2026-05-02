@@ -10,7 +10,7 @@ class SettingsScene(SceneBase):
 
     def draw(self, screen):
         screen.fill((50, 50, 50))  # グレー
-        font = pygame.font.SysFont("msgothic", 40)
+        font = self.controller.asset_manager.get_font(40)
         txt = font.render("SETTINGS - CLICK BOTTOM TO BACK", True, COLOR_WHITE)
         screen.blit(txt, (50, SCREEN_HEIGHT // 2))
 
