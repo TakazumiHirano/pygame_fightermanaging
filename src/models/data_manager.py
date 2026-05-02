@@ -31,17 +31,21 @@ class DataManager:
         # 基礎値のセット
         final_agi = job.get("base_agi", 10)
         final_str = job.get("base_str", 10)
+        final_vit = job.get("base_vit", 10)
 
         # 性格による補正（倍率をかける）
         for t_id in char.get("trait_ids", []):
             trait = self.master_data["traits"].get(t_id, {})
             final_agi *= trait.get("agi_mod", 1.0)
             final_str *= trait.get("str_mod", 1.0)
+            final_vit *= trait.get("vit_mod", 1.0)  # 性格によるVIT補正[cite: 1]
 
         return {
             "name": char.get("name"),
             "agi": int(final_agi),
             "str": int(final_str),
+            "vit": int(final_vit),
+            "loyalty": char.get("loyalty", 50),
             "image_label": char.get("image_label")
         }
 

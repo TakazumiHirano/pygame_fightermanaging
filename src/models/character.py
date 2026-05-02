@@ -11,6 +11,8 @@ class Character(pygame.sprite.Sprite):
         self.name = params["name"]
         self.agi = params["agi"]  # AGIベースの行動抽選
         self.str = params["str"]
+        self.vit = params["vit"]
+        self.loyalty = params["loyalty"]
 
         # 画像の読み込み（パスを組み立てる）
         image_name = params.get("image_label", "default.png")
