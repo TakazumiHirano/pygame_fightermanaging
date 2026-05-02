@@ -56,7 +56,7 @@ class BattleScene(SceneBase):
 
         super().draw(screen)  # キャラの描画
         # 簡易ログの表示
-        font = pygame.font.SysFont("notosanscjp", 20)
+        font = pygame.font.SysFont("msgothic", 20)
         for i, log in enumerate(self.battle_logs[-5:]):  # 直近5件を表示
             text = font.render(log, True, (255, 255, 255))
             screen.blit(text, (10, 500 + i * 20))
@@ -97,7 +97,7 @@ class BattleScene(SceneBase):
                          (draw_x, draw_y, width, height), 2)
 
         # テキストの描画
-        font = pygame.font.SysFont("notosanscjp", 18)
+        font = pygame.font.SysFont("msgothic", 18)
         stats_text = [
             f"NAME: {char.name}",
             f"AGI: {char.agi}",   # AGIベースの行動抽選
