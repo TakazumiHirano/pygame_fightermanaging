@@ -2,6 +2,7 @@
 
 # エンジンから基底クラスを連れてくる
 from src.engine.scene_base import SceneBase
+from src.models import Character
 
 # 各シーンを公開する
 from .title_scene import TitleScene

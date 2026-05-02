@@ -1,30 +1,32 @@
 import pygame
 import time
-from . import SceneBase
+from . import SceneBase,Character
 from config.settings import *
-
 
 class BattleScene(SceneBase):
     def __init__(self, controller):
         # 親クラスの SceneBase に controller を渡して初期化
         super().__init__(controller)
-        self.start_time = time.time()
-        self.duration = 3
+        self.allies = []
+        self.enemies = []
+        self.setup_characters()
 
-    def update(self):
-        elapsed = time.time() - self.start_time
-        if elapsed >= self.duration:
-            self.controller.request_change("title")
+    def setup_characters(self):
+        """キャラクターの初期配置[cite: 1]"""
+        # 左側（自陣）に2体配置
+        self.allies.append(Character("Hirano", "assets/images/ally.png", "ally", (200, 200)))
+        self.allies.append(Character("Yamada", "assets/images/ally.png", "ally", (200, 400)))
+
+        # 右側（敵陣）に2体配置
+        self.enemies.append(Character("Enemy_A", "assets/images/enemy.png", "enemy", (600, 200)))
+        self.enemies.append(Character("Enemy_B", "assets/images/enemy.png", "enemy", (600, 400)))
 
     def draw(self, screen):
-        screen.fill((100, 30, 30))  # 赤
-        font = pygame.font.SysFont("notosanscjp", 40)
-
-        elapsed = time.time() - self.start_time
-        remain = max(0, int(self.duration - elapsed))
-
-        txt = font.render(f"BATTLE! TIME LEFT: {remain}s", True, COLOR_WHITE)
-        screen.blit(txt, (SCREEN_WIDTH//2 - 150, SCREEN_HEIGHT // 2))
+        screen.fill((50, 100, 50))  # 戦闘フィールドっぽい色
+        
+        # 全キャラを描画
+        for char in self.allies + self.enemies:
+            char.draw(screen)
 
     def handle_event(self, event):
         if event.type == pygame.MOUSEBUTTONUP:
