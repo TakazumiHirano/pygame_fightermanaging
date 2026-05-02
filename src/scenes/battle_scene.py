@@ -1,12 +1,13 @@
 import pygame
 import time
-from . import SceneBase,Character,BattleEngine
+from . import SceneBase, Character, BattleEngine
 from config.settings import *
 
+
 class BattleScene(SceneBase):
-    def __init__(self, controller):
+    def __init__(self, controller, data_manager):
         # 親クラスの SceneBase に controller を渡して初期化
-        super().__init__(controller)
+        super().__init__(controller, data_manager)
         self.allies = []
         self.enemies = []
         self.setup_characters()
@@ -17,13 +18,20 @@ class BattleScene(SceneBase):
 
     def setup_characters(self):
         """キャラクターの初期配置[cite: 1]"""
-        # 左側（自陣）に2体配置
-        self.allies.append(Character("Hirano", "assets/images/ally.png", "ally", (200, 200)))
-        self.allies.append(Character("Yamada", "assets/images/ally.png", "ally", (200, 400)))
+        # self.dm = DataManager()
+
+        # 左側（自陣）に2体配置# 「warrior」というIDを指定して生成
+        self.allies.append(
+            Character("warrior", self.data_manager, "ally", (200, 200)))
+        # 「mage」というIDを指定して生成
+        self.allies.append(
+            Character("mage", self.data_manager, "ally", (200, 400)))
 
         # 右側（敵陣）に2体配置
-        self.enemies.append(Character("Enemy_A", "assets/images/enemy.png", "enemy", (600, 200)))
-        self.enemies.append(Character("Enemy_B", "assets/images/enemy.png", "enemy", (600, 400)))
+        self.enemies.append(
+            Character("enemy", self.data_manager, "enemy", (600, 200)))
+        self.enemies.append(
+            Character("enemy", self.data_manager, "enemy", (600, 400)))
 
     def update(self):
         # サンプルとして、一定間隔で自動で行動が進むようにする
@@ -41,15 +49,15 @@ class BattleScene(SceneBase):
 
     def draw(self, screen):
         screen.fill((50, 100, 50))  # 戦闘フィールドっぽい色
-        
+
         # 全キャラを描画
         for char in self.allies + self.enemies:
             char.draw(screen)
 
-        super().draw(screen) # キャラの描画
+        super().draw(screen)  # キャラの描画
         # 簡易ログの表示
         font = pygame.font.SysFont("notosanscjp", 20)
-        for i, log in enumerate(self.battle_logs[-5:]): # 直近5件を表示
+        for i, log in enumerate(self.battle_logs[-5:]):  # 直近5件を表示
             text = font.render(log, True, (255, 255, 255))
             screen.blit(text, (10, 500 + i * 20))
 

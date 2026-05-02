@@ -4,9 +4,9 @@ from config.settings import *
 
 
 class TitleScene(SceneBase):
-    def __init__(self, controller):
+    def __init__(self, controller, data_manager):
         # 親クラスの SceneBase に controller を渡して初期化
-        super().__init__(controller)
+        super().__init__(controller, data_manager)
 
     def draw(self, screen):
         screen.fill((30, 30, 50))  # 濃い紺

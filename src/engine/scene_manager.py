@@ -1,10 +1,14 @@
 # 自分のフォルダ内にある scene_base をインポート
 from .scene_base import SceneBase
+from src.models.data_manager import DataManager
+
 
 class SceneController:
     """シーンの登録と遷移を管理するコントローラ"""
 
     def __init__(self):
+        self.data_manager = DataManager()
+
         self.scenes_registry = {}  # "title": TitleScene のような辞書
         self.current_scene = None
         self.current_scene_name = None  # 現在のシーン名を保持
@@ -40,7 +44,8 @@ class SceneController:
             scene_class = self.scenes_registry[name]
             # 新しいシーンをインスタンス化（controllerを自分自身として渡す）
             self.current_scene_name = name
-            self.current_scene = scene_class(self, **kwargs)
+            # ★インスタンス化する際、data_managerも一緒に渡すようにする
+            self.current_scene = scene_class(self, self.data_manager, **kwargs)
         else:
             print(f"Error: Scene '{name}' is not registered.")
 
@@ -53,4 +58,3 @@ class SceneController:
         else:
             # 履歴がない場合はデフォルトでタイトルへ
             self.request_change("title", use_history=False)
-

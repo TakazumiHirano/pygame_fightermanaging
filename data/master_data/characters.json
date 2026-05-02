@@ -1,0 +1,30 @@
+{
+    "warrior": {
+        "name": "戦士",
+        "image_label": "ally.png",
+        "agi": 12,
+        "str": 15,
+        "vit": 18,
+        "traits": ["戦闘狂"],
+        "loyalty": 50
+    },
+    "mage": {
+        "name": "魔術師",
+        "image_label": "ally.png",
+        "agi": 8,
+        "str": 5,
+        "vit": 10,
+        "traits": ["臆病"],
+        "loyalty": 70
+    },
+    "enemy":{
+        "name": "敵",
+        "image_label": "enemy.png",
+        "agi": 8,
+        "str": 5,
+        "vit": 10,
+        "traits": ["敵"],
+        "loyalty": 70
+
+    }
+}
