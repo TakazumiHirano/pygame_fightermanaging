@@ -2,6 +2,8 @@
 
 # エンジンから基底クラスを連れてくる
 from src.engine.scene_base import SceneBase
+from src.engine.battle_engine import BattleEngine
+
 from src.models import Character
 
 # 各シーンを公開する
