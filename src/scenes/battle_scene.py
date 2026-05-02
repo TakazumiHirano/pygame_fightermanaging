@@ -22,16 +22,16 @@ class BattleScene(SceneBase):
 
         # 左側（自陣）に2体配置# 「warrior」というIDを指定して生成
         self.allies.append(
-            Character("warrior", self.data_manager, "ally", (200, 200)))
+            Character("ch001", self.data_manager, "ally", (200, 200)))
         # 「mage」というIDを指定して生成
         self.allies.append(
-            Character("mage", self.data_manager, "ally", (200, 400)))
+            Character("ch002", self.data_manager, "ally", (200, 400)))
 
         # 右側（敵陣）に2体配置
         self.enemies.append(
-            Character("enemy", self.data_manager, "enemy", (600, 200)))
+            Character("enemy001", self.data_manager, "enemy", (600, 200)))
         self.enemies.append(
-            Character("enemy", self.data_manager, "enemy", (600, 400)))
+            Character("enemy001", self.data_manager, "enemy", (600, 400)))
 
     def update(self):
         # サンプルとして、一定間隔で自動で行動が進むようにする

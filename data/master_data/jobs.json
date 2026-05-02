@@ -1,0 +1,17 @@
+{
+    "warrior": { 
+        "job_name": "戦士", 
+        "base_agi": 8,
+         "base_str": 15 
+    },
+    "mage": { 
+        "job_name": "魔術師", 
+        "base_agi": 8,
+         "base_str": 15 
+    },
+    "thief": { 
+        "job_name": "盗賊",
+        "base_agi": 15,
+        "base_str": 8
+    }
+}

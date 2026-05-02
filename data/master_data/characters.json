@@ -1,30 +1,20 @@
 {
-    "warrior": {
+    "ch001": {
         "name": "戦士",
-        "image_label": "ally.png",
-        "agi": 12,
-        "str": 15,
-        "vit": 18,
-        "traits": ["戦闘狂"],
-        "loyalty": 50
+        "job_id": "warrior",
+        "trait_ids": ["battle_maniac"],
+        "image_label": "ally.png"
     },
-    "mage": {
+    "ch002": {
         "name": "魔術師",
-        "image_label": "ally.png",
-        "agi": 8,
-        "str": 5,
-        "vit": 10,
-        "traits": ["臆病"],
-        "loyalty": 70
+        "job_id": "mage",
+        "trait_ids": ["coward"],
+        "image_label": "ally.png"
     },
-    "enemy":{
+    "enemy001":{
         "name": "敵",
-        "image_label": "enemy.png",
-        "agi": 8,
-        "str": 5,
-        "vit": 10,
-        "traits": ["敵"],
-        "loyalty": 70
-
+        "job_id": "thief",
+        "trait_ids": ["enemy"],
+        "image_label": "enemy.png"
     }
 }
