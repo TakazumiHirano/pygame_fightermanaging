@@ -1,0 +1,14 @@
+{
+    "human": { 
+        "monmusu_name": "人間"
+    },
+    "werewolf": { 
+        "monmusu_name": "ワーウルフ"
+    },
+    "harpy": { 
+        "monmusu_name": "ハーピー"
+    },
+    "slime": { 
+        "monmusu_name": "スライム"
+    }
+}
