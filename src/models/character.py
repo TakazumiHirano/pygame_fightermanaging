@@ -9,6 +9,7 @@ class Character(pygame.sprite.Sprite):
         params = data_manager.get_final_stats(char_id)
 
         self.name = params["name"]
+        self.monmusu_name = params["monmusu_name"]
         self.agi = params["agi"]  # AGIベースの行動抽選
         self.str = params["str"]
         self.vit = params["vit"]

@@ -17,7 +17,7 @@ class DataManager:
     def load_all_data(self):
         """ 複数のJSONファイルを読み込む """
         # ルートディレクトリからの絶対パスを組み立てる
-        for data_name in ["characters", "jobs", "traits"]:
+        for data_name in ["characters", "monmusu", "jobs", "traits"]:
             path = os.path.join(self.base_dir, "data",
                                 "master_data", f"{data_name}.json")
             with open(path, "r", encoding="utf-8") as f:
@@ -27,11 +27,18 @@ class DataManager:
         """個体、職業、性格を合算して最終パラメータを算出する"""
         char = self.master_data["characters"].get(char_id, {})
         job = self.master_data["jobs"].get(char.get("job_id"), {})
+        monmusu = self.master_data["monmusu"].get(char.get("monmusu_id"), {})
 
         # 基礎値のセット
         final_agi = job.get("base_agi", 10)
         final_str = job.get("base_str", 10)
         final_vit = job.get("base_vit", 10)
+
+        # 種族(モンスター娘)による補正
+        monmusu_name = monmusu.get("monmusu_name")
+        final_agi *= monmusu.get("agi_mod", 1.0)
+        final_str *= monmusu.get("str_mod", 1.0)
+        final_vit *= monmusu.get("vit_mod", 1.0)
 
         # 性格による補正（倍率をかける）
         for t_id in char.get("trait_ids", []):
@@ -42,6 +49,7 @@ class DataManager:
 
         return {
             "name": char.get("name"),
+            "monmusu_name": monmusu.get("monmusu_name"),
             "agi": int(final_agi),
             "str": int(final_str),
             "vit": int(final_vit),

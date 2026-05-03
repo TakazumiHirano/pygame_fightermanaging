@@ -1,14 +1,26 @@
 {
     "human": { 
-        "monmusu_name": "人間"
+        "monmusu_name": "人間",
+        "agi_mod":0.1,
+        "str_mod":0.1,
+        "vit_mod":0.1
     },
     "werewolf": { 
-        "monmusu_name": "ワーウルフ"
+        "monmusu_name": "ワーウルフ",
+        "agi_mod":1,
+        "str_mod":1.4,
+        "vit_mod":1
     },
     "harpy": { 
-        "monmusu_name": "ハーピー"
+        "monmusu_name": "ハーピー",
+        "agi_mod":1.2,
+        "str_mod":1,
+        "vit_mod":0.8
     },
     "slime": { 
-        "monmusu_name": "スライム"
+        "monmusu_name": "スライム",
+        "agi_mod":0.6,
+        "str_mod":0.6,
+        "vit_mod":0.6
     }
 }

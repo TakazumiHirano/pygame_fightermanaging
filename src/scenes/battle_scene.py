@@ -79,7 +79,7 @@ class BattleScene(SceneBase):
         # 窓の設定
         padding = 10
         line_height = 25
-        width, height = 180, 130
+        width, height = 180, 155
 
         # 画面端で窓が切れないように表示位置を調整
         draw_x = pos[0] + 20
@@ -100,6 +100,7 @@ class BattleScene(SceneBase):
         font = self.controller.asset_manager.get_font(18)
         stats_text = [
             f"NAME: {char.name}",
+            f"MONMUSU: {char.monmusu_name}",
             f"AGI: {char.agi}",   # AGIベースの行動抽選
             f"STR: {char.str}",
             f"VIT: {char.vit}",   # 基礎能力値
