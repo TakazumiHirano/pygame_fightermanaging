@@ -8,11 +8,14 @@ class BattleEngine:
 
     def calculate_likelihood(self, char):
         """仕様書に基づく行動抽選率の算出"""
-        x = self.turn_counts[char] + 1 # フェーズ内での行動回数
-        n = 2 # 補正項（調整用）
+        x = 2 # 補正項（調整用）
+        n = self.turn_counts[char] + 1 # フェーズ内での行動回数
         
-        # AGI * (1/x)^(n-1)
-        likelihood = char.agi * math.pow((1/x), n - 1)
+        # 0徐算対策
+        x = max(0.1,x)
+
+        # AGI * (1/x)^n - 1 (結果切り捨て)
+        likelihood = char.agi // math.pow(x,(n-1))
         return max(0, likelihood)
 
     def select_next_actor(self):
