@@ -96,14 +96,17 @@ class BattleScene(SceneBase):
         pygame.draw.rect(screen, (255, 255, 255),
                          (draw_x, draw_y, width, height), 2)
 
+        # 行動数
+        likelihood = self.engine.calculate_likelihood(char)
+
         # テキストの描画
         font = self.controller.asset_manager.get_font(18)
         stats_text = [
             f"NAME: {char.name}",
             f"MONMUSU: {char.monmusu_name}",
-            f"AGI: {char.agi}",   # AGIベースの行動抽選
             f"STR: {char.str}",
             f"VIT: {char.vit}",   # 基礎能力値
+            f"AGI: {char.agi}" + f"({likelihood})",   # AGIベースの行動抽選
             f"LOYALTY: {char.loyalty}"  # 忠誠度
         ]
 

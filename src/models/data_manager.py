@@ -29,13 +29,20 @@ class DataManager:
         job = self.master_data["jobs"].get(char.get("job_id"), {})
         monmusu = self.master_data["monmusu"].get(char.get("monmusu_id"), {})
 
-        # 基礎値のセット
-        final_agi = job.get("base_agi", 10)
-        final_str = job.get("base_str", 10)
-        final_vit = job.get("base_vit", 10)
+        # 種族(モンスター娘)によるベース
+        final_str = monmusu.get("str", 10)
+        final_vit = monmusu.get("vit", 10)
+        final_dex = monmusu.get("dex", 10)
+        final_agi = monmusu.get("agi", 10)
+        final_int = monmusu.get("int", 10)
+        final_luk = monmusu.get("luk", 10)
+        final_men = monmusu.get("men", 10)
+        final_sol = monmusu.get("sol", 10)
+        final_pres = monmusu.get("pres", 10)
+        final_mres = monmusu.get("mres", 10)
+        final_sres = monmusu.get("sres", 10)
 
-        # 種族(モンスター娘)による補正
-        monmusu_name = monmusu.get("monmusu_name")
+        # 職業による補正
         final_agi *= monmusu.get("agi_mod", 1.0)
         final_str *= monmusu.get("str_mod", 1.0)
         final_vit *= monmusu.get("vit_mod", 1.0)
@@ -43,16 +50,16 @@ class DataManager:
         # 性格による補正（倍率をかける）
         for t_id in char.get("trait_ids", []):
             trait = self.master_data["traits"].get(t_id, {})
-            final_agi *= trait.get("agi_mod", 1.0)
             final_str *= trait.get("str_mod", 1.0)
-            final_vit *= trait.get("vit_mod", 1.0)  # 性格によるVIT補正[cite: 1]
+            final_vit *= trait.get("vit_mod", 1.0)
+            final_agi *= trait.get("agi_mod", 1.0)
 
         return {
             "name": char.get("name"),
             "monmusu_name": monmusu.get("monmusu_name"),
-            "agi": int(final_agi),
             "str": int(final_str),
             "vit": int(final_vit),
+            "agi": int(final_agi),
             "loyalty": char.get("loyalty", 50),
             "image_label": char.get("image_label")
         }
