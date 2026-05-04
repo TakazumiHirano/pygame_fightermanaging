@@ -13,7 +13,7 @@ class BattleScene(SceneBase):
         self.setup_characters()
 
         # 戦闘エンジンの初期化
-        self.engine = BattleEngine(self.allies, self.enemies)
+        self.engine = BattleEngine(self.allies, self.enemies,data_manager)
         self.battle_logs = ["戦闘開始！"]
 
     def setup_characters(self):
