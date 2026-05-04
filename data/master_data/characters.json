@@ -1,0 +1,23 @@
+{
+    "ch001": {
+        "name": "ワー子",
+        "monmusu_id": "werewolf",
+        "job_id": "warrior",
+        "trait_ids": ["battle_maniac"],
+        "image_label": "ally.png"
+    },
+    "ch002": {
+        "name": "ハピ子",
+        "monmusu_id": "harpy",
+        "job_id": "mage",
+        "trait_ids": ["coward"],
+        "image_label": "ally.png"
+    },
+    "enemy001":{
+        "name": "スララ",
+        "monmusu_id": "slime",
+        "job_id": "thief",
+        "trait_ids": ["enemy"],
+        "image_label": "enemy.png"
+    }
+}

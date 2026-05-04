@@ -1,0 +1,17 @@
+{
+    "battle_maniac": { 
+        "trait_name": "戦闘狂", 
+        "agi_mod": 1.2, 
+        "str_mod": 1.1 
+    },
+    "coward": { 
+        "trait_name": "臆病",
+        "agi_mod": 1.0, 
+        "str_mod": 0.8 
+    },
+    "enemy": { 
+        "trait_name": "敵",
+        "agi_mod": 1.0, 
+        "str_mod": 0.8 
+    }
+}

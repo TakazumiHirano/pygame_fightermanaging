@@ -1,0 +1,58 @@
+{
+    "human": { 
+        "monmusu_name": "人間",
+        "str":10,
+        "vit":10,
+        "dex":10,
+        "agi":10,
+        "int":10,
+        "luk":10,
+        "men":10,
+        "sol":10,
+        "pres":3,
+        "mres":3,
+        "sres":3
+    },
+    "werewolf": { 
+        "monmusu_name": "ワーウルフ",
+        "str":14,
+        "vit":8,
+        "dex":6,
+        "agi":16,
+        "int":4,
+        "luk":10,
+        "men":4,
+        "sol":12,
+        "pres":4,
+        "mres":2,
+        "sres":3
+    },
+    "harpy": { 
+        "monmusu_name": "ハーピー",
+        "str":6,
+        "vit":6,
+        "dex":8,
+        "agi":20,
+        "int":2,
+        "luk":14,
+        "men":8,
+        "sol":18,
+        "pres":2,
+        "mres":3,
+        "sres":5
+    },
+    "slime": { 
+        "monmusu_name": "スライム",
+        "str":4,
+        "vit":4,
+        "dex":2,
+        "agi":6,
+        "int":1,
+        "luk":10,
+        "men":8,
+        "sol":32,
+        "pres":2,
+        "mres":8,
+        "sres":8
+    }
+}

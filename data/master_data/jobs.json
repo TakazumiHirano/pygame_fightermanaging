@@ -1,0 +1,26 @@
+{
+    "None": { 
+        "job_name": "無職",
+        "str_mod": 1,
+        "vit_mod": 1,
+        "agi_mod": 1
+    },
+    "warrior": { 
+        "job_name": "戦士",
+        "str_mod": 1,
+        "vit_mod": 1,
+        "agi_mod": 1
+    },
+    "mage": { 
+        "job_name": "魔術師",
+        "str_mod": 1,
+        "vit_mod": 1,
+        "agi_mod": 1
+    },
+    "thief": { 
+        "job_name": "盗賊",
+        "str_mod": 1,
+        "vit_mod": 1,
+        "agi_mod": 1
+    }
+}
